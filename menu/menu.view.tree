@@ -1,0 +1,57 @@
+$hyoo_meta_menu $mol_page
+	editable true
+	item_moved* null
+	yard $hyoo_sync_yard
+	item* $hyoo_meta_model
+		title => item_title*
+	list $hyoo_crowd_list
+		list => ids
+		world => world
+	Logo $mol_avatar
+		id <= logo_id
+	tools /
+		<= Editing $mol_check_icon
+			hint @ \Edit list
+			checked? <=> editing? false
+			Icon <= Editing_icon $mol_icon_pencil_outline
+		<= Add $mol_button_minor
+			hint @ \Add new
+			click? <=> add? null
+			sub /
+				<= Add_icon $mol_icon_plus
+	body /
+		<= Content $mol_list rows /
+			<= Filter $mol_search
+				query? <=> filter? \
+			<= Items $mol_list
+				rows <= items /
+					<= Item*0_0 <= Item_drop* $mol_drop
+						enabled <= editable
+						adopt? <=> transfer_adopt? null
+						receive? <=> receive_after*? null
+						Sub <= Item_drag* $mol_drag
+							transfer *
+								text/plain <= item_text* \
+								text/html <= item_html* \
+								text/uri-list <= item_uri*
+							Sub <= Item_row* $mol_view
+								sub <= item_row* /
+									<= Item_link* $mol_link
+										uri <= item_uri* \
+										sub /
+											<= Item_title* $mol_dimmer
+												haystack <= item_title*
+												needle <= filter
+									<= Item_remove* $mol_button_minor
+										click? <=> item_remove*? null
+										sub /
+											<= Item_remove_icon* $mol_icon_cross
+									<= Item_add* $mol_button_minor
+										click? <=> item_add*? null
+										sub /
+											<= Item_add_icon* $mol_icon_plus
+		<= Drop_end $mol_drop
+			enabled <= editable
+			adopt? <=> transfer_adopt? null
+			receive? <=> receive_end? null
+			Sub <= Drop_zone $mol_view
