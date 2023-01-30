@@ -28,11 +28,13 @@ namespace $.$$ {
 				
 				return this.yard()
 					.land_search( this.filter() )
-					.filter( id => this.item( id ).whole().title().trim() )
+					.map( id => this.item( id ).whole() )
+					.filter( meta => meta.title().trim() )
+					.map( meta => meta.id() )
 				
 			} else {
 			
-				return this.ids().map(  $mol_int62_string_ensure ).reverse()
+				return this.ids().map( $mol_int62_string_ensure ).reverse()
 				
 			}
 		}

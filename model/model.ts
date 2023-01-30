@@ -26,7 +26,7 @@ namespace $ {
 		
 		@ $mol_mem_key
 		whole( next?: $hyoo_meta_model | null ) {
-			const reg = this.sub( 'whole', $hyoo_crowd_reg )
+			const reg = this.sub( '$hyoo_meta_whole', $hyoo_crowd_reg )
 			const id = $mol_int62_string_ensure( reg.str( next?.id() ) )
 			return id ? this.world()!.Fund( $hyoo_meta_model ).Item( id ) : this
 		}
