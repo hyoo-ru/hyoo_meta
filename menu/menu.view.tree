@@ -8,7 +8,7 @@ $hyoo_meta_menu $mol_page
 		list => ids
 		world => world
 	Logo $mol_avatar
-		id <= logo_id
+		id <= logo_id \
 	tools /
 		<= Editing $mol_check_icon
 			hint @ \Edit list
