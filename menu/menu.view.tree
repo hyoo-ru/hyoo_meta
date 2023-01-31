@@ -33,15 +33,13 @@ $hyoo_meta_menu $mol_page
 							transfer *
 								text/plain <= item_text* \
 								text/html <= item_html* \
-								text/uri-list <= item_uri*
+								text/uri-list <= item_uri* \
 							Sub <= Item_row* $mol_view
 								sub <= item_row* /
-									<= Item_link* $mol_link
-										uri <= item_uri* \
-										sub /
-											<= Item_title* $mol_dimmer
-												haystack <= item_title*
-												needle <= filter
+									<= Item_link* $hyoo_meta_link
+										meta <= item*
+										param <= param \
+										highlight <= filter
 									<= Item_remove* $mol_button_minor
 										click? <=> item_remove*? null
 										sub /
