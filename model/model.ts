@@ -5,6 +5,10 @@ namespace $ {
 		editable() {
 			return this.land.allowed_mod()
 		}
+		@ $mol_mem
+		editors() {
+			return this.land.peers()
+		}
 		
 		@ $mol_mem
 		title_node() {

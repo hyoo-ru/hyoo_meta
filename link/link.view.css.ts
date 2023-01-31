@@ -1,6 +1,6 @@
 namespace $ {
 	
-	$mol_style_define( $hyoo_page_side_snippet, {
+	$mol_style_define( $hyoo_meta_link, {
 		
 		Title: {
 			flex: {
