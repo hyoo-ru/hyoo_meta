@@ -9,10 +9,6 @@ namespace $ {
 			grow: 0,
 		},
 		
-		Filter: {
-			alignSelf: 'stretch',
-		},
-		
 		Item_drop: {
 			'@': {
 				'mol_drop_status': {
