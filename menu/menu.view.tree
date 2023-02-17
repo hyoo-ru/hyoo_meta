@@ -9,7 +9,6 @@ $hyoo_meta_menu $mol_page
 		world => world
 	item_list* $hyoo_crowd_list
 	drop_allow /
-		\link
 		\move
 	Logo $mol_avatar
 		id <= logo_id \

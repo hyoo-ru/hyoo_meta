@@ -91,26 +91,28 @@ namespace $.$$ {
 			list.drop( dropped )
 			
 			const index = list.list().indexOf( anchor )
+			list.insert( [dropped], index + 1 )
 			
-			setTimeout( ()=> {
-				list.insert( [dropped], index + 1 )
-				this.item_moved( dropped )
-			}, 1 )
+			this.item_moved( dropped )
 			
 		}
 		
 		@ $mol_action
 		receive_end( dropped: $mol_int62_string ) {
-			setTimeout( ()=> {
-				this.list().insert( [dropped], 0 )
-				this.item_moved( dropped )
-			}, 1 )
+			
+			const list = this.list()
+			list.drop( dropped )
+			
+			this.list().insert( [dropped], 0 )
+			
+			this.item_moved( dropped )
+			
 		}
 		
-		item_drag_end( id: $mol_int62_string, event: DragEvent ) {
-			if( event.dataTransfer!.dropEffect !== 'move' ) return
-			this.list().drop( id )
-		}
+		// item_drag_end( id: $mol_int62_string, event: DragEvent ) {
+		// 	if( event.dataTransfer!.dropEffect !== 'move' ) return
+		// 	this.list().drop( id )
+		// }
 		
 	}
 	
