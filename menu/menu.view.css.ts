@@ -70,6 +70,12 @@ namespace $ {
 			},
 		},
 		
+		Item_items: {
+			padding: {
+				left: rem(1.25),
+			},
+		},
+		
 	} )
 	
 }

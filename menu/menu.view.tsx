@@ -49,6 +49,11 @@ namespace $.$$ {
 			]
 		}
 		
+		@ $mol_mem_key
+		item_items( id: $mol_int62_string ) {
+			return this.item_list( id ).list().map( id => this.Item( id ) )
+		}
+		
 		@ $mol_action
 		item_remove( id: $mol_int62_string ) {
 			this.list().drop( id )
@@ -77,6 +82,7 @@ namespace $.$$ {
 			
 		}
 
+		@ $mol_action
 		receive_after( anchor: $mol_int62_string, dropped: $mol_int62_string ) {
 
 			if( anchor === dropped ) return
@@ -85,15 +91,25 @@ namespace $.$$ {
 			list.drop( dropped )
 			
 			const index = list.list().indexOf( anchor )
-			this.list().insert( [dropped], index + 1 )
 			
-			this.item_moved( dropped )
+			setTimeout( ()=> {
+				list.insert( [dropped], index + 1 )
+				this.item_moved( dropped )
+			}, 1 )
 			
 		}
 		
+		@ $mol_action
 		receive_end( dropped: $mol_int62_string ) {
-			this.list().insert( [dropped], 0 )
-			this.item_moved( dropped )
+			setTimeout( ()=> {
+				this.list().insert( [dropped], 0 )
+				this.item_moved( dropped )
+			}, 1 )
+		}
+		
+		item_drag_end( id: $mol_int62_string, event: DragEvent ) {
+			if( event.dataTransfer!.dropEffect !== 'move' ) return
+			this.list().drop( id )
 		}
 		
 	}

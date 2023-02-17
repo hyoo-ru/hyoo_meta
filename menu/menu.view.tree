@@ -7,6 +7,10 @@ $hyoo_meta_menu $mol_page
 	list $hyoo_crowd_list
 		list => ids
 		world => world
+	item_list* $hyoo_crowd_list
+	drop_allow /
+		\link
+		\move
 	Logo $mol_avatar
 		id <= logo_id \
 	tools /
@@ -25,31 +29,38 @@ $hyoo_meta_menu $mol_page
 				query? <=> filter? \
 			<= Items $mol_list
 				rows <= items /
-					<= Item*0_0 <= Item_drop* $mol_drop
-						enabled <= editable
-						adopt? <=> transfer_adopt? null
-						receive? <=> receive_after*? null
-						Sub <= Item_drag* $mol_drag
-							transfer *
-								text/plain <= item_text* \
-								text/html <= item_html* \
-								text/uri-list <= item_uri* \
-							Sub <= Item_row* $mol_view
-								sub <= item_row* /
-									<= Item_link* $hyoo_meta_link
-										meta <= item*
-										param <= param \
-										highlight <= filter
-									<= Item_remove* $mol_button_minor
-										click? <=> item_remove*? null
-										sub /
-											<= Item_remove_icon* $mol_icon_cross
-									<= Item_add* $mol_button_minor
-										click? <=> item_add*? null
-										sub /
-											<= Item_add_icon* $mol_icon_plus
+					<= Item*0_0 $mol_list
+						rows /
+							<= Item_drop* $mol_drop
+								enabled <= editable
+								adopt? <=> transfer_adopt? null
+								receive? <=> receive_after*? null
+								allow <= drop_allow
+								Sub <= Item_drag* $mol_drag
+									end? <=> item_drag_end*? null
+									transfer *
+										text/plain <= item_text* \
+										text/html <= item_html* \
+										text/uri-list <= item_uri* \
+									Sub <= Item_row* $mol_view
+										sub <= item_row* /
+											<= Item_link* $hyoo_meta_link
+												meta <= item*
+												param <= param \
+												highlight <= filter
+											<= Item_remove* $mol_button_minor
+												click? <=> item_remove*? null
+												sub /
+													<= Item_remove_icon* $mol_icon_cross
+											<= Item_add* $mol_button_minor
+												click? <=> item_add*? null
+												sub /
+													<= Item_add_icon* $mol_icon_plus
+							<= Item_items* $mol_list
+								rows <= item_items* /
 		<= Drop_end $mol_drop
 			enabled <= editable
 			adopt? <=> transfer_adopt? null
 			receive? <=> receive_end? null
 			Sub <= Drop_zone $mol_view
+			allow <= drop_allow
