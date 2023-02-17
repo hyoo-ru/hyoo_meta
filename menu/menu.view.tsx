@@ -7,8 +7,24 @@ namespace $.$$ {
 			return this.list().land.id()
 		}
 		
+		@ $mol_mem
+		head() {
+			return [
+				this.Title(),
+				this.Tools(),
+				... this.search_show() ? [ this.Search() ] : [],
+			]
+		}
+		
 		tools() {
-			return this.editable() ? super.tools() : []
+			return this.editable() ? super.tools() : [ this.Search_toggle() ]
+		}
+		
+		@ $mol_mem
+		search_show( next = false ) {
+			if( next === true ) this.Search().bring()
+			if( next === false ) this.search( '' )
+			return next
 		}
 		
 		@ $mol_mem
@@ -24,10 +40,10 @@ namespace $.$$ {
 		@ $mol_mem
 		filtered() {
 			
-			if( this.filter() ) {
+			if( this.search() ) {
 				
 				return this.yard()
-					.land_search( this.filter() )
+					.land_search( this.search() )
 					.map( id => this.item( id ).whole() )
 					.filter( meta => meta.title().trim() )
 					.map( meta => meta.id() )
