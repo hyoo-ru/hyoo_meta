@@ -88,12 +88,13 @@ namespace $.$$ {
 			if( anchor === dropped ) return
 			
 			const list = this.list()
+			const exists = list.has( dropped )
 			list.drop( dropped )
 			
 			const index = list.list().indexOf( anchor )
 			list.insert( [dropped], index + 1 )
 			
-			this.item_moved( dropped )
+			if( !exists ) this.item_moved( dropped )
 			
 		}
 		
@@ -101,11 +102,12 @@ namespace $.$$ {
 		receive_end( dropped: $mol_int62_string ) {
 			
 			const list = this.list()
+			const exists = list.has( dropped )
 			list.drop( dropped )
 			
 			this.list().insert( [dropped], 0 )
 			
-			this.item_moved( dropped )
+			if( !exists ) this.item_moved( dropped )
 			
 		}
 		
