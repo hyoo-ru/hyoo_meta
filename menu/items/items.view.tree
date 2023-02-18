@@ -1,0 +1,59 @@
+$hyoo_meta_menu_items $mol_list
+	id \
+	editing false
+	drop_allow /
+		\move
+		\link
+	list $hyoo_crowd_list
+		list => ids
+	item* $hyoo_meta_model
+		title => item_title*
+	item_list* $hyoo_crowd_list
+	item_moved*? null
+	rows <= items /
+		<= Item*0_0 $mol_list
+			rows /
+				<= Item_row* $mol_view
+					sub <= item_row* /
+						<= Item_drop_after* $mol_drop
+							enabled <= editable
+							adopt? <=> transfer_adopt? null
+							receive? <=> receive_after*? null
+							allow <= drop_allow
+							Sub <= Item_drag* $mol_drag
+								end? <=> item_drag_end*? null
+								transfer *
+									text/plain <= item_text* \
+									text/html <= item_html* \
+									text/uri-list <= item_uri* \
+								Sub <= Item_link* $hyoo_meta_link
+									meta <= item*
+									param <= param \
+									highlight <= highlight \
+									Avatar null
+						<= Item_remove* $mol_button_minor
+							click? <=> item_remove*? null
+							sub /
+								<= Item_remove_icon* $mol_icon_cross
+						<= Item_pin* $mol_button_minor
+							click? <=> item_pin*? null
+							sub /
+								<= Item_pin_icon* $mol_icon_pin_outline
+						<= Item_drop_inside* $mol_drop
+							enabled <= editable
+							adopt? <=> transfer_adopt? null
+							receive? <=> receive_inside*? null
+							allow <= drop_allow
+							Sub <= Item_add* $mol_button_minor
+								click? <=> item_add*? null
+								sub /
+									<= Item_add_icon* $mol_icon_plus
+				<= Item_items* $hyoo_meta_menu_items
+					editing <= editing
+					list <= item_list*
+					item* <= item*
+					item_moved*? <=> item_moved*?
+					item_list* <= item_list*
+					item_uri* <= item_uri*
+					highlight <= highlight
+					item_add*? <=> item_add*?
