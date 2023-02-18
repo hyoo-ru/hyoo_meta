@@ -35,7 +35,7 @@ $hyoo_meta_menu $mol_page
 	body /
 		<= Found $hyoo_meta_menu_items
 			editing <= editing
-			drop_allow false
+			drop_allow /
 			list <= list
 			ids <= found /$mol_int62_string
 			highlight <= search
