@@ -16,7 +16,7 @@ $hyoo_meta_menu_items $mol_list
 				<= Item_row* $mol_view
 					sub <= item_row* /
 						<= Item_drop_after* $mol_drop
-							enabled <= editable
+							enabled <= editable false
 							adopt? <=> transfer_adopt? null
 							receive? <=> receive_after*? null
 							allow <= drop_allow
