@@ -2,6 +2,18 @@ namespace $.$$ {
 	
 	export class $hyoo_meta_rights extends $.$hyoo_meta_rights {
 		
+		editable() {
+			return this.meta().land.allowed_law()
+		}
+		
+		@ $mol_mem
+		blocks() {
+			return [
+				this.Editor_list(),
+				... this.editable() ? [ this.Editor_add() ] : [],
+			]
+		}
+		
 		@ $mol_mem
 		editor_list() {
 			const meta = this.meta().id()
@@ -23,12 +35,13 @@ namespace $.$$ {
 			return ( next.trim().match( /^(?:.*=)?([0-9a-z]+_[0-9a-z]+)/ )?.[1] ?? '' ) as $mol_int62_string
 		}
 		
-		editor_add_filled() {
+		editor_add_allowed() {
+			if( !this.editable() ) return false
 			return Boolean( this.editor_add_id() )
 		}
 		
 		editor_add_bid() {
-			return this.editor_add_filled() ? super.editor_add_bid() : ''
+			return Boolean( this.editor_add_id() ) ? super.editor_add_bid() : ''
 		}
 		
 		editor_fill_all() {
