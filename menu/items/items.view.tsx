@@ -33,11 +33,13 @@ namespace $.$$ {
 		item_row( id: $mol_int62_string ) {
 			return [
 				this.Item_drop_after( id ),
-				... this.item_editable( id )
+				... this.editable()
 					? this.list().has( id )
 						? this.editing()
 							? [ this.Item_remove( id ) ]
-							: [ this.Item_drop_inside( id ) ]
+							: this.item_editable( id )
+								? [ this.Item_drop_inside( id ) ]
+								: []
 						: [ this.Item_pin( id ) ]
 					: [],
 			]
