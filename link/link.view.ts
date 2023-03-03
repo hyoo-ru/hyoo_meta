@@ -4,7 +4,7 @@ namespace $.$$ {
 		
 		@ $mol_mem
 		title() {
-			return this.id() === '0_0' ? this.all_title() : super.title() 
+			return  ( this.id() === '0_0' ? this.all_title() : super.title() ) || ( this.Avatar() ? '' : '...' )
 		}
 		
 		@ $mol_mem
