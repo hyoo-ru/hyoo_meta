@@ -23,6 +23,13 @@ namespace $ {
 			},
 		},
 		
+		Item_add: {
+			opacity: 0.5,
+			':hover': {
+				opacity: 1,
+			},
+		},
+		
 		Item_drop_inside: {
 			'@': {
 				'mol_drop_status': {
@@ -37,6 +44,7 @@ namespace $ {
 								color: $mol_theme.focus,
 							}]
 						},
+						opacity: 1,
 					},
 				},
 			},
