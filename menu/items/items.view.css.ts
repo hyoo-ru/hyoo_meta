@@ -5,6 +5,8 @@ namespace $ {
 	$mol_style_define( $hyoo_meta_menu_items, {
 		
 		Item_expand: {
+			position: 'absolute',
+			zIndex: $mol_layer.float,
 			margin: {
 				left: rem(-1.25),
 				right: rem(-1.25),
