@@ -4,6 +4,13 @@ namespace $ {
 	
 	$mol_style_define( $hyoo_meta_menu_items, {
 		
+		Item_expand: {
+			margin: {
+				left: rem(-1.25),
+				right: rem(-1.25),
+			},
+		},
+		
 		Item_drop_after: {
 			'@': {
 				'mol_drop_status': {
@@ -64,7 +71,7 @@ namespace $ {
 		
 		Item_items: {
 			padding: {
-				left: rem(.75),
+				left: rem(1.5),
 			},
 		},
 		

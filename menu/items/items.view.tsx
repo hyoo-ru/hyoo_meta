@@ -29,9 +29,24 @@ namespace $.$$ {
 			return this.list().world()!.Fund( $hyoo_meta_model ).Item( id )
 		}
 		
+		item_expandable( id: $mol_int62_string ) {
+			return this.item_list( id ).list().length > 0
+		}
+		
+		@ $mol_mem_key
+		item_content( id: $mol_int62_string ) {
+			return [
+				this.Item_row( id ),
+				... this.item_expanded( id )
+					? [ this.Item_items( id ) ]
+					: []
+			]
+		}
+		
 		@ $mol_mem_key
 		item_row( id: $mol_int62_string ) {
 			return [
+				this.Item_expand( id ),
 				this.Item_drop_after( id ),
 				... this.editable()
 					? this.list().has( id )

@@ -12,9 +12,12 @@ $hyoo_meta_menu_items $mol_list
 	item_moved*? null
 	rows <= items /
 		<= Item*0_0 $mol_list
-			rows /
+			rows <= item_content* /
 				<= Item_row* $mol_view
 					sub <= item_row* /
+						<= Item_expand* $mol_check_expand
+							expandable <= item_expandable* false
+							expanded? <=> item_expanded*? true
 						<= Item_drop_after* $mol_drop
 							enabled <= editable false
 							adopt? <=> transfer_adopt? null
