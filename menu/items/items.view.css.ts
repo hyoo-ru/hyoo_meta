@@ -71,6 +71,9 @@ namespace $ {
 		},
 		
 		Item_items: {
+			margin: {
+				left: rem(.75),
+			},
 			padding: {
 				left: rem(.75),
 			},
