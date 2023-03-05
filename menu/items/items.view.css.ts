@@ -9,7 +9,6 @@ namespace $ {
 			zIndex: $mol_layer.float,
 			margin: {
 				left: rem(-1.25),
-				right: rem(-1.25),
 			},
 		},
 		
@@ -73,7 +72,17 @@ namespace $ {
 		
 		Item_items: {
 			padding: {
-				left: rem(1.5),
+				left: rem(.75),
+			},
+		    box: {
+				shadow: [{
+					inset: true,
+					x: px(1),
+					y: 0,
+					blur: 0,
+					spread: 0,
+					color: $mol_theme.line,
+				}],
 			},
 		},
 		
