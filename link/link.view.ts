@@ -9,7 +9,7 @@ namespace $.$$ {
 		
 		@ $mol_mem
 		uri() {
-			return this.$.$mol_state_arg.make_link({
+			return this.$.$mol_state_arg.link({
 				[ this.param() ]: this.id(),
 			})
 		}

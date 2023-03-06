@@ -13,6 +13,7 @@ $hyoo_meta_menu $mol_page
 		\link
 	Logo $mol_avatar
 		id <= id \
+	tools_ext /
 	head /
 		<= Title
 		<= Tools
@@ -32,6 +33,7 @@ $hyoo_meta_menu $mol_page
 			click? <=> add? null
 			sub /
 				<= Add_icon $mol_icon_plus
+		^ tools_ext
 	body /
 		<= Found $hyoo_meta_menu_items
 			editing <= editing

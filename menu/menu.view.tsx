@@ -25,7 +25,7 @@ namespace $.$$ {
 		}
 		
 		tools() {
-			return this.editable() ? super.tools() : [ this.Search_toggle() ]
+			return this.editable() ? super.tools() : [ this.Search_toggle(), ... this.tools_ext() ]
 		}
 		
 		@ $mol_mem
