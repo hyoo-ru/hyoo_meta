@@ -59,6 +59,7 @@ $hyoo_meta_menu_items $mol_list
 					list <= item_list*
 					item* <= item*
 					item_moved*? <=> item_moved*?
+					item_expanded*? <=> item_expanded*?
 					item_list* <= item_list*
 					item_uri* <= item_uri*
 					highlight <= highlight
