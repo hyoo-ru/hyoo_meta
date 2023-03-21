@@ -73,11 +73,12 @@ namespace $ {
 		Item_items: {
 			margin: {
 				left: rem(.75),
+				bottom: rem(.75),
 			},
 			padding: {
 				left: rem(.75),
 			},
-		    box: {
+			box: {
 				shadow: [{
 					inset: true,
 					x: px(1),
