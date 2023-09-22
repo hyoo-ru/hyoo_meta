@@ -28,7 +28,7 @@ namespace $ {
 			this.land.steal_rights( node.land )
 		}
 		
-		@ $mol_mem_key
+		@ $mol_mem
 		whole( next?: $hyoo_meta_model | null ) {
 			const reg = this.sub( '$hyoo_meta_whole', $hyoo_crowd_reg )
 			const id = $mol_int62_string_ensure( reg.str( next?.id() ) )
