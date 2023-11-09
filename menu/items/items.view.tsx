@@ -16,7 +16,8 @@ namespace $.$$ {
 		}
 		
 		ids() {
-			return super.ids().slice().reverse() as readonly $mol_int62_string[]
+			const self = this.id()
+			return super.ids().filter( id => id !== self ).reverse() as readonly $mol_int62_string[]
 		}
 		
 		@ $mol_mem
