@@ -56,7 +56,7 @@ namespace $.$$ {
 			
 				const pack = $mol_base64_decode( serial )
 				const closed = pack.slice( 0, this.key_size() )
-				const salt = pack.slice( this.key_size() )
+				const salt = $mol_crypto_hash( pack.slice( this.key_size() ) ).slice( 0, 16 )
 				
 				const pass = this.password()
 				const secret = $mol_wire_sync( this.$.$mol_crypto_secret ).from( pass )
@@ -87,17 +87,17 @@ namespace $.$$ {
 		key_export() {
 			
 			const pass = this.password()
-			const recall = this.recall() || '...'
+			const recall = $mol_charset_encode( this.recall() )
 			
 			const secret = $mol_wire_sync( this.$.$mol_crypto_secret ).from( pass )
-			const salt = $mol_charset_encode( recall )
+			const salt = $mol_crypto_hash( recall ).slice( 0, 16 )
 			
 			const open = this.$.$mol_charset_encode( this.yard().peer().key_private_serial )
 			const closed = new Uint8Array( $mol_wire_sync( secret ).encrypt( open, salt ) )
 			
-			const pack = new Uint8Array( this.key_size() + salt.byteLength )
+			const pack = new Uint8Array( this.key_size() + recall.byteLength )
 			pack.set( closed, 0 )
-			pack.set( salt, this.key_size() )
+			pack.set( recall, this.key_size() )
 			
 			return this.$.$mol_base64_encode( pack )
 			
