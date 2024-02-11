@@ -1,7 +1,7 @@
 $hyoo_meta_menu $mol_page
 	editable true
 	item_moved*? null
-	yard $hyoo_sync_yard
+	yard $hyoo_sync_yard<any>
 	item* $hyoo_meta_model
 		title => item_title*
 	list $hyoo_crowd_list
