@@ -59,7 +59,7 @@ namespace $.$$ {
 				const salt = $mol_crypto_hash( pack.slice( this.key_size() ) ).slice( 0, 16 )
 				
 				const pass = this.password()
-				const secret = $mol_wire_sync( this.$.$mol_crypto_secret ).from( pass )
+				const secret = $mol_wire_sync( this.$.$mol_crypto_secret ).pass( pass, salt )
 				const opened = $mol_wire_sync( secret ).decrypt( closed, salt )
 				
 				return $mol_charset_decode( opened )
@@ -89,8 +89,8 @@ namespace $.$$ {
 			const pass = this.password()
 			const recall = $mol_charset_encode( this.recall() )
 			
-			const secret = $mol_wire_sync( this.$.$mol_crypto_secret ).from( pass )
 			const salt = $mol_crypto_hash( recall ).slice( 0, 16 )
+			const secret = $mol_wire_sync( this.$.$mol_crypto_secret ).pass( pass, salt )
 			
 			const open = this.$.$mol_charset_encode( this.yard().peer().key_private_serial )
 			const closed = new Uint8Array( $mol_wire_sync( secret ).encrypt( open, salt ) )
