@@ -38,7 +38,7 @@ $hyoo_meta_menu_items $mol_list
 							hint @ \Remove
 							click? <=> item_remove*? null
 							sub /
-								<= Item_remove_icon* $mol_icon_cross
+								<= Item_remove_icon* $mol_icon_close
 						<= Item_pin* $mol_button_minor
 							hint @ \Pin here
 							click? <=> item_pin*? null
