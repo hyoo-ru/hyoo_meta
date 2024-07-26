@@ -8,7 +8,7 @@ namespace $ {
 			position: 'absolute',
 			zIndex: $mol_layer.float,
 			margin: {
-				left: rem(-1.25),
+				left: rem(-7.5),
 			},
 		},
 		
